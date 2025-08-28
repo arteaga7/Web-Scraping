@@ -12,6 +12,8 @@ import matplotlib.image as mpimg
 import numpy as np
 import os
 
+path = os.path.join(os.getcwd(), 'data')
+
 # Date transformation
 checkin_date = datetime.today() + timedelta(days=0)
 checkout_date = checkin_date + timedelta(days=1)
@@ -48,7 +50,7 @@ for row in table:
                     ).text.strip().replace(',', '').replace(';', '')
     hotels.append(name)
 
-# Get location from downtown
+# Get location
 locations = []
 for row in table:
     location = row.find(
@@ -68,7 +70,6 @@ df_hotels = pd.DataFrame(
 
 file_name = datetime.now().strftime('%Y-%m-%d %H:%M:%S')+'.csv'
 
-path = os.path.join(os.getcwd(), 'data')
 os.chdir(path)
 
 df_hotels.to_csv(file_name, index=False, sep='\t')
