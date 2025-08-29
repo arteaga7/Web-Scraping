@@ -1,6 +1,7 @@
-'''This script gets data from a web page and converts it into a pandas DataFrame.'''
+'''This is an example of web scraping when url link is composed of many search parameters
+and data is not in a table. Data is saved in a csv file, the file is named by using the current date.'''
 
-# Import libreries
+# Import libraries
 import requests
 from bs4 import BeautifulSoup as bs
 import pandas as pd
@@ -68,7 +69,7 @@ for row in table:
 df_hotels = pd.DataFrame(
     data={'Hotel': hotels, 'Location': locations, 'Price': prices})
 
-file_name = datetime.now().strftime('%Y-%m-%d %H:%M:%S')+'.csv'
+file_name = 'hotels_' + datetime.now().strftime('%Y-%m-%d %H:%M:%S')+'.csv'
 
 os.chdir(path)
 
